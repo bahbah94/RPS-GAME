@@ -44,7 +44,6 @@ The following modifications were made to the base contract:
 - **Solidity Version:** Updated to `^0.8.28`
 - **Logic:** All game logic and core implementation completed from scratch
 
-
 ### Game Mechanics
 
 **Move Validation:** The commit-reveal scheme prevents Player 1 from changing their move. The submitted hash is verified against the reveal parameters to ensure integrity.
@@ -155,6 +154,160 @@ The following modifications were made to the base contract:
 **Deployment:**
 - Vercel (frontend hosting)
 - Ethereum Sepolia (contract deployment)
+
+---
+
+## 📦 Installation & Setup
+
+### Prerequisites
+Ensure you have the following installed on your system:
+- **Node.js** (v16 or higher) - Download from https://nodejs.org/
+- **npm** (comes with Node.js)
+- **Git** (for version control)
+
+### Global Dependencies
+Install the required global packages:
+
+```bash
+npm install -g npx
+npm install -g serve
+```
+
+### Project Setup
+
+#### 1. Clone or Download the Project
+```bash
+git clone <your-repo-url>
+cd <project-directory>
+```
+
+#### 2. Install Project Dependencies
+```bash
+npm install
+```
+
+This will install all dependencies listed in `package.json`, including:
+- ethers.js (Web3 integration)
+- Any build tools or frameworks used in the project
+
+### 🔨 Compiling Smart Contract ABI
+
+To compile the Solidity contract and generate the ABI (Application Binary Interface):
+
+```bash
+npx compile
+```
+
+**What this does:**
+- Compiles the Solidity contract (^0.8.28)
+- Generates the ABI JSON file needed for frontend interaction
+- Creates output files in the `artifacts/` or `build/` directory (depending on your setup)
+
+**After compilation:**
+- Copy the generated ABI file to your frontend directory
+- Update the contract address and ABI in your frontend configuration
+
+### 🚀 Running the Frontend
+
+Navigate to the frontend directory and start the development server:
+
+```bash
+cd frontend
+npx serve
+```
+
+**What this does:**
+- Starts a local development server (typically on http://localhost:3000 or http://localhost:5000)
+- Serves your frontend files with hot-reloading capabilities
+- Allows you to test the game locally before deploying to Vercel
+
+**Alternative - Using npm start (if configured):**
+```bash
+npm start
+```
+
+### 📋 Complete Setup Workflow
+
+Follow these steps in order for a fresh setup:
+
+```bash
+# 1. Navigate to project directory
+cd your-project-directory
+
+# 2. Install all dependencies
+npm install
+
+# 3. Compile the smart contract ABI
+npx compile
+
+# 4. Navigate to frontend folder
+cd frontend
+
+# 5. Install frontend dependencies (if separate package.json)
+npm install
+
+# 6. Start the development server
+npx serve
+```
+
+Your game should now be running locally! Open your browser to the URL shown in the terminal (usually http://localhost:3000 or http://localhost:5000).
+
+### 🌐 Environment Variables
+
+Before running the frontend, ensure you have the following configured:
+
+Create a `.env` or `.env.local` file in your frontend directory:
+
+```
+REACT_APP_INFURA_KEY=your_infura_key_here
+REACT_APP_CONTRACT_ADDRESS=your_sepolia_contract_address_here
+REACT_APP_NETWORK_ID=11155111
+```
+
+**Important:**
+- `REACT_APP_INFURA_KEY`: Your Infura API key (for RPC endpoints)
+- `REACT_APP_CONTRACT_ADDRESS`: The deployed contract address on Sepolia
+- `REACT_APP_NETWORK_ID`: 11155111 is the Sepolia testnet chain ID
+
+### ✅ Verification Checklist
+
+After setup, verify everything is working:
+
+- [ ] All npm packages installed successfully
+- [ ] Contract compiled without errors (`npx compile` completes)
+- [ ] ABI file generated in the expected directory
+- [ ] Frontend server starts with `npx serve`
+- [ ] Browser opens to localhost without errors
+- [ ] MetaMask or wallet extension connects successfully
+- [ ] Sepolia testnet is selected in wallet
+- [ ] Both player accounts have Sepolia ETH
+
+### 🐛 Troubleshooting
+
+**"npx compile not found"**
+- Ensure your project has a compile script in `package.json` under the "scripts" section
+- Check the script name matches your build tool (Hardhat, Truffle, etc.)
+
+**"npx serve not found"**
+- Install globally: `npm install -g serve`
+- Or run: `npx serve` directly (npx will download it if needed)
+
+**Port already in use**
+- If port 3000 or 5000 is busy, specify a different port:
+  ```bash
+  npx serve --listen 8080
+  ```
+
+**Contract compilation errors**
+- Verify Solidity version matches (^0.8.28)
+- Check for syntax errors in `.sol` files
+- Ensure all imports are available
+
+**Frontend won't connect to contract**
+- Verify contract address in environment variables
+- Ensure ABI file is in the correct location
+- Check that you're on Sepolia testnet
+- Verify Infura key has appropriate permissions
 
 ---
 
