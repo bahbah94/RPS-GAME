@@ -3,6 +3,8 @@
 A blockchain-based implementation of the classic Rock Paper Scissors Lizard Spock game deployed on Ethereum Sepolia testnet. Two players compete in a commit-reveal scheme with on-chain winner determination and automated timeout mechanisms.
 
 **Play the game:** https://rps-game-six-rho.vercel.app/
+**Link to Demo** : https://youtu.be/lGg_s-WCDP0
+
 
 ---
 
